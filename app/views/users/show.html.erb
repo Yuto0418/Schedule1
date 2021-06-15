@@ -1,0 +1,39 @@
+<div class="main_container">
+  <div class="information">
+    <h2>スケジュール詳細</h2>
+  </div>
+  <table> 
+    <tbody>
+      <tr>
+        <th>タイトル</th>
+        <td><%= @user.title %></td>
+      </tr>
+      <tr>
+        <th>開始日</th>
+        <td><%= @user.start_day.to_s(:stamp) %></td>
+      </tr>
+      <tr>
+        <th>投稿日時</th>
+        <td><%= @user.created_at.to_s(:datetime_jp) %></td>
+      </tr>
+      <tr>
+        <th>終日</th>
+        <td>
+          <strong><%= @user.all_day %></strong>
+        </td>
+      </tr>
+      <tr>
+        <th>スケジュールメモ</th>
+        <td><pre><%= @user.memo %></pre></td>
+      </tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><%= link_to "スケジュール一覧に戻る", :users %></li>
+    <li><%= link_to "スケジュールを編集する", edit_user_path %></li>
+    <li><%= link_to "スケジュールを削除する", @user, method: :delete, data: { confirm: "本当に削除しますか？" } %></li>
+  </ul>
+</div>
+<footer>
+  <h1>現在の日時 : <%= Date.current.to_s(:stamp) %></h1>
+</footer>
